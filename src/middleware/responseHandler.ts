@@ -1,4 +1,5 @@
-export function responseHandler(res, status, message, data=null ){
+import type { Request, Response, NextFunction } from "express";
+export function responseHandler(res:Response, status:number, message:string, data=null ){
     res.status(status).json({
         status,
         message,
@@ -7,9 +8,9 @@ export function responseHandler(res, status, message, data=null ){
 };
 
 
-export function errorhandler(err, req, res, next){
+export function errorhandler(err:any, req:Request, res:Response, next:NextFunction){
     const statusCode = err.status || err.statusCode || 500;
-    console.log(`[Error]..=> ${err.message}`);
+    console.log(`[Error]...=> ${err.message}`);
     console.log(`{Error}.... ${err}`);
     res.status(statusCode).json({
         success: false,

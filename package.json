@@ -2,25 +2,40 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "NODE_OPTIONS=--no-network-family-autoselection tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "NODE_OPTIONS=--no-network-family-autoselection node dist/server.js",
+    "db:generate": "drizzle-kit generate"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Techbium/Zocial_BE.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "bugs": {
+    "url": "https://github.com/Techbium/Zocial_BE/issues"
+  },
+  "homepage": "https://github.com/Techbium/Zocial_BE#readme",
   "dependencies": {
-    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
     "express": "^5.2.1",
-    "firebase-admin": "^14.3.0",
-    "firebase-auth": "^0.1.2",
-    "joi": "^18.2.5",
-    "jsonwebtoken": "^9.0.3",
-    "nodemon": "^3.1.14"
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.4.1",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
   }
 }
